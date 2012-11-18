@@ -6,7 +6,10 @@ Redmine::Plugin.register :redmine_bitbucket do
   url 'https://bitbucket.org/steveqx/redmine_bitbucket'
 
   settings :default => {
+    :service_enabled => true,
+    :auto_create => true,
     :local_path => 'bitbucket_repos',
+    :key => '',
   }, :partial => 'settings/redmine_bitbucket'
 
 end

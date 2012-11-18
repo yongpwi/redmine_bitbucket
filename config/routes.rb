@@ -1,1 +1,1 @@
-post 'bitbucket-service', :to => 'bitbucket_service#index'
+post 'bitbucket_service', :to => 'bitbucket_service#index'
