@@ -1,4 +1,8 @@
 class BitbucketHg < SystemCommand
+
+  def self.scm_class
+    Repository::Mercurial
+  end
   
   # Fetches updates from the remote repository
   def self.update_repository(local_url)
