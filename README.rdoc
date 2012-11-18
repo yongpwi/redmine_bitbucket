@@ -12,19 +12,19 @@ The Redmine Bitbucket plugin allows Bitbucket to notify your Redmine installatio
 
 1. Installing the plugin
 
-	* Copy redmine_contacts plugin to {Radmine_root}/plugins on your redmine path
-	* Run 'bundle install RAILS_ENV=production'
-	* Run 'rake redmine:plugins NAME=redmine_bitbucket RAILS_ENV=production'
-	* Restart Redmine.
-	* Configure Local repositories path (default is {Radmine_root}/bitbucket_repos) at Administration > Plugins >Redmine Bitbucket plugin, and make sure the folder is writable by web server user.
-	* Configure SSH key for the web server user to access private repositories (https://confluence.atlassian.com/display/BITBUCKET/Using+the+SSH+protocol+with+bitbucket)
-	* (optional) Configure the secret key 
+    * Copy redmine_bitbucket plugin to {redmine_root}/plugins on your redmine path
+    * Run 'bundle install RAILS_ENV=production'
+    * Run 'rake redmine:plugins NAME=redmine_bitbucket RAILS_ENV=production'
+    * Restart Redmine.
+    * Configure Local repositories path (default is {redmine_root}/bitbucket_repos) at Administration > Plugins >Redmine Bitbucket plugin, and make sure the folder is writable by web server user.
+    * Configure SSH key for the web server user if need to pull from private repositories. (https://confluence.atlassian.com/display/BITBUCKET/Using+the+SSH+protocol+with+bitbucket)
+    * (optional) Configure the secret key 
 
 2. Connecting Bitbucket to Redmine
-   1. Go to the repository Admin interface on Bitbucket.
-   2. Under "Services" add a new "POST" of the format: "[redmine_installation_url]/bitbucket_service?project_id=[identifier](&key=[***])" (for example "http://example.com/bitbucket_service?project_id=example_project(&key=secret)").
+    * Go to the repository Admin interface on Bitbucket.
+    * Under "Services" add a new "POST" of the format: "[redmine_installation_url]/bitbucket_service?project_id=[identifier](&key=[***])" (for example "http://example.com/bitbucket_service?project_id=example_project&key=supersecret").
 
-That's it. Bitbucket will now send a HTTP POST to the Redmine Bitbucket plugin whenever changes are pushed to Bitbucket. A new local repository will be created with Bitbucket's repository name as the identifier on first request. Then pulling the changes to the local repository and updating the Redmine database with them. Auto cloning can be disable under plugin setting, which only updating will be performed. 
+That's it. Bitbucket will now send a HTTP POST to the Redmine Bitbucket plugin whenever changes are pushed to Bitbucket. A new local repository will be created with Bitbucket's repository name as the identifier on first request. Then pull changes to the local repository and updating the Redmine database with them. Auto cloning can be disable under plugin setting, which only updating will be performed. 
 
 
 == Assumptions
