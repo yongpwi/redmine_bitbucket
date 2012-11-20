@@ -37,7 +37,7 @@ class BitbucketServiceController < ApplicationController
   def valid_key?
     setting_key = Setting.plugin_redmine_bitbucket[:service_key]
     return true if setting_key.to_s == ''
-    return params[:key] != setting_key
+    return params[:key] == setting_key
   end
 
   # Finds the Redmine project in the database based on the given project identifier
