@@ -10,8 +10,6 @@ class BitbucketServiceController < ApplicationController
       return render :nothing => true, :status => 404 
     end
 
-    @adapter = BitbucketAdapter.new(params[:payload])
-
     repository = find_repository
 
     if repository.nil? 
@@ -52,14 +50,15 @@ class BitbucketServiceController < ApplicationController
   # Returns the Redmine Repository object we are trying to update
   def find_repository
     project = find_project
-    repository = project.repositories.find_by_identifier(@adapter.identifier)
+    adapter = BitbucketAdapter.new(params[:payload])
+    repository = project.repositories.find_by_identifier(adapter.identifier)
    
     if repository
-      @adapter.update_repository(repository)
+      adapter.update_repository(repository)
 
     elsif Setting.plugin_redmine_bitbucket[:auto_create]
-        # Clone the repository into Redmine
-      repository = @adapter.create_repository(project)
+      # Clone the repository into Redmine
+      repository = adapter.create_repository(project)
 
     else
       raise ActiveRecord::RecordNotFound
