@@ -10,8 +10,6 @@ Redmine::Plugin.register :redmine_bitbucket do
     :auto_create => true,
     :local_path => 'bitbucket_repos',
     :key => '',
-    :git_cmd_path => '',
-    :hg_cmd_path => '',
   }, :partial => 'settings/redmine_bitbucket'
 
 end
