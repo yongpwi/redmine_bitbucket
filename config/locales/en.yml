@@ -4,4 +4,6 @@ en:
   label_auto_create: "Enable auto clone"
   label_service_key: "Secret key"
   label_local_path: "Local repositories path"
+  label_git_cmd_path: "git command path"
+  label_hg_cmd_path: "hg command path"
 
