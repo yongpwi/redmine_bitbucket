@@ -12,7 +12,7 @@ class BitbucketAdapter
       @cmd = git_cmd && !git_cmd.empty? ? git_cmd : 'git'
     when 'hg'
       @scm = BitbucketHg
-      hg_cmd = Redmine::Configuration['scm_hg_command']
+      hg_cmd = Redmine::Configuration['scm_mercurial_command']
       @cmd = hg_cmd && !hg_cmd.empty? ? hg_cmd : 'hg'
     else
       raise TypeError, "Repository type (#{@payload['scm']}) not supported"
