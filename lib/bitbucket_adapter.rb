@@ -1,7 +1,7 @@
 require 'json'
 
 class BitbucketAdapter
-  
+
   def initialize(json)
     @payload = JSON.parse(json)['repository']
 
@@ -24,7 +24,7 @@ class BitbucketAdapter
     @scm.update_repository(repository.url)
   end
 
-  def create_repository(project)   
+  def create_repository(project)
     path = "#{@payload['owner']}/#{@payload['slug']}"
 
     local_root_path = Setting.plugin_redmine_bitbucket[:local_path]

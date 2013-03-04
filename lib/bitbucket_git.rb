@@ -1,14 +1,16 @@
 class BitbucketGit < SystemCommand
 
+  GIT_BIN = Redmine::Configuration['scm_git_command'] || "git"
+
   def self.scm_class
     Repository::Git
   end
-  
+
   # Fetches updates from the remote repository
   def self.update_repository(local_url)
-    command = "git --git-dir='#{local_url}' fetch origin"
+    command = GIT_BIN + " --git-dir='#{local_url}' fetch origin"
     if exec(command)
-      command = "git --git-dir='#{local_url}' -fetch origin '+refs/heads/*:refs/heads/*'"
+      command = GIT_BIN + " --git-dir='#{local_url}' fetch origin '+refs/heads/*:refs/heads/*'"
       exec(command)
     end
   end
@@ -16,7 +18,7 @@ class BitbucketGit < SystemCommand
   # Clone repository from Bitbucket
   def self.clone_repository(path, local_url)
     remote_url = "git@bitbucket.org:#{path}.git"
-    command = "git clone --mirror #{remote_url} #{local_url}"
+    command = GIT_BIN + " clone --mirror #{remote_url} #{local_url}"
     return exec(command)
   end 
 
