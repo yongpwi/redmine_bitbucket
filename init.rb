@@ -2,7 +2,7 @@ Redmine::Plugin.register :redmine_bitbucket do
   name 'Redmine Bitbucket plugin'
   author 'Steve Qian'
   description 'This plugin allows you to update your local repositories in Redmine when changes have been pushed to Bitbucket.'
-  version '0.1.0'
+  version '0.2.0'
   url 'https://bitbucket.org/steveqx/redmine_bitbucket'
 
   settings :default => {
