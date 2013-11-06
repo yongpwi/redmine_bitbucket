@@ -8,9 +8,10 @@ class BitbucketGit < SystemCommand
 
   # Fetches updates from the remote repository
   def self.update_repository(local_url)
-    command = GIT_BIN + " --git-dir='#{local_url}' fetch origin"
+    fetch_opts = Setting.plugin_redmine_bitbucket[:git_fetch_with_prune] ? '--prune' : ''
+    command = GIT_BIN + " --git-dir='#{local_url}' fetch #{fetch_opts} origin"
     if exec(command)
-      command = GIT_BIN + " --git-dir='#{local_url}' fetch origin '+refs/heads/*:refs/heads/*'"
+      command = GIT_BIN + " --git-dir='#{local_url}' fetch #{fetch_opts} origin '+refs/heads/*:refs/heads/*'"
       exec(command)
     end
   end

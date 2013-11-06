@@ -4,4 +4,5 @@ en:
   label_auto_create: "Enable auto clone"
   label_service_key: "Secret key"
   label_local_path: "Local repositories path"
+  label_git_fetch_with_prune: "Fetch with prune option(Git)"
 
