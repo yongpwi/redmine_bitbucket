@@ -1,0 +1,8 @@
+# Japanese strings go here for Rails i18n
+ja:
+  label_service_enabled: "Bitbucktサービスを有効化"
+  label_auto_create: "自動cloneを有効化"
+  label_service_key: "Secret key"
+  label_local_path: "ローカルリポジトリパス"
+  label_git_fetch_with_prune: "pruneオプション付きでfetch(Git)"
+
