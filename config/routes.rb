@@ -1,1 +1,1 @@
-post 'bitbucket_service', :to => 'bitbucket_service#index'
+post 'hooks/bitbucket/:project_id', :to => 'bitbucket_service#index'
