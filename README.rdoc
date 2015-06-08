@@ -23,7 +23,7 @@ The Redmine Bitbucket plugin allows Bitbucket to notify your Redmine installatio
 
 2. Connecting Bitbucket to Redmine
     * On bitbucket.org, go to the repository Admin interface (the sprocket icon).
-    * Under "hooks" add a new hook of type "POST" using the format: "[redmine_installation_url]/hooks/bitbucket/:project_id(&key=[***])"  (for example "http://example.com/hooks/bitbucket/example_project&key=supersecret").
+    * Under "hooks" add a new hook of type "POST" using the format: "[redmine_installation_url]/hooks/bitbucket/:project_id(?key=[***])"  (for example "http://example.com/hooks/bitbucket/example_project?key=supersecret").
     * Note: since v1.0 of this plugin, the POST url has changed to hooks/bitbucket/:project_id, which is not backwards compatible.
 
 That's it. Bitbucket will now send a HTTP POST to the Redmine Bitbucket plugin whenever changes are pushed to Bitbucket. A new local repository will be created with Bitbucket's repository name as the identifier on first request. Then pull changes to the local repository and updating the Redmine database with them. Auto cloning can be disable under plugin setting, which only updating will be performed. 
