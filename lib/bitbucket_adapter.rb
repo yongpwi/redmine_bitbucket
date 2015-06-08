@@ -28,7 +28,7 @@ class BitbucketAdapter
     path = "#{@payload['owner']}/#{@payload['slug']}"
 
     local_root_path = Setting.plugin_redmine_bitbucket[:local_path]
-    local_url = "#{local_root_path}/#{project.identifier}/#{path}"
+    local_url = "#{local_root_path}/#{path}/#{project.identifier}/"
 
     FileUtils.mkdir_p(local_url) unless File.exists?(local_url)
 
