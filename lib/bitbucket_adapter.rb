@@ -1,22 +1,15 @@
-require 'json'
-
 class BitbucketAdapter
 
-  def initialize(json)
-    @payload = JSON.parse(json)['repository']
-
-    case @payload['scm'].downcase
-    when 'git'
-      @scm = BitbucketGit
-    when 'hg'
-      @scm = BitbucketHg
+  def initialize(json, new_webhook)
+    if new_webhook
+      load_new_webhook_parameters(json)
     else
-      raise TypeError, "Repository type (#{@payload['scm']}) not supported"
+      load_old_service_parameters(json)
     end
   end
 
   def identifier
-    "#{@payload['owner']}_#{@payload['slug']}"
+    "#{@owner}_#{@slug}"
   end
 
   def update_repository(repository)
@@ -25,7 +18,7 @@ class BitbucketAdapter
   end
 
   def create_repository(project)
-    path = "#{@payload['owner']}/#{@payload['slug']}"
+    path = "#{@owner}/#{@slug}"
 
     local_root_path = Setting.plugin_redmine_bitbucket[:local_path]
     local_url = "#{local_root_path}/#{path}/#{project.identifier}/"
@@ -43,4 +36,31 @@ class BitbucketAdapter
     end
   end
 
+  private
+  
+  def load_new_webhook_parameters(json)
+    @owner = json['owner']['username']
+    @slug = json['full_name'].split('/').last
+	
+    load_scm(json['scm'].downcase)
+  end
+  
+  def load_old_service_parameters(json)
+    @owner = json['owner']
+    @slug = json['slug']
+	
+    load_scm(json['scm'].downcase)
+  end
+  
+  def load_scm(scm)
+    case scm
+    when 'git'
+      @scm = BitbucketGit
+    when 'hg'
+      @scm = BitbucketHg
+    else
+      raise TypeError, "Repository type (#{scm}) not supported"
+    end
+  end
+  
 end
