@@ -1,6 +1,6 @@
 # English strings go here for Rails i18n
 en:
-  label_service_enabled: "Enable Bitbuckt service"
+  label_service_enabled: "Enable Bitbucket service"
   label_auto_create: "Enable auto clone"
   label_service_key: "Secret key"
   label_local_path: "Local repositories path"
