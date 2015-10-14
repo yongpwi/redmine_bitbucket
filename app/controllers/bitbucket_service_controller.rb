@@ -50,7 +50,8 @@ class BitbucketServiceController < ApplicationController
   # Returns the Redmine Repository object we are trying to update
   def find_repository
     project = find_project
-    adapter = BitbucketAdapter.new(params[:payload])
+    json, new_webhook = get_params()
+    adapter = BitbucketAdapter.new(json, new_webhook)
     repository = project.repositories.find_by_identifier(adapter.identifier)
    
     if repository
@@ -65,6 +66,16 @@ class BitbucketServiceController < ApplicationController
     end
 
     return repository
+  end
+  
+  def get_params()
+    if params[:payload]
+      return JSON.parse(params[:payload])['repository'], false
+    elsif params['repository']
+      return params['repository'], true
+    else
+      raise "Provided POST parameters could not be recognized by Redmine Bitbucket plugin"
+    end
   end
 
 end
