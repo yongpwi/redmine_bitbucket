@@ -1,14 +1,14 @@
-= Redmine Bitbucket plugin
+# Redmine Bitbucket plugin #
 
 This plugin allows you to update your local repositories in Redmine when changes have been pushed to Bitbucket.
 
-== Description
+## Description ##
 
 Redmine <http://redmine.org> has supported Git/Hg repositories for a long time, allowing you to browse your code and view your changesets directly in Redmine. For this purpose, Redmine relies on local clones of the Git/Hg repositories.
 
 The Redmine Bitbucket plugin allows Bitbucket to notify your Redmine installation when changes have been pushed to a repository, triggering an update of your local repository and Redmine data only when it is actually necessary.
 
-== Installation
+## Installation ##
 
 1. Installing the plugin
 
@@ -29,9 +29,9 @@ The Redmine Bitbucket plugin allows Bitbucket to notify your Redmine installatio
 That's it. Bitbucket will now send a HTTP POST to the Redmine Bitbucket plugin whenever changes are pushed to Bitbucket. A new local repository will be created with Bitbucket's repository name as the identifier on first request. Then pull changes to the local repository and updating the Redmine database with them. Auto cloning can be disable under plugin setting, which only updating will be performed. 
 
 
-== Assumptions
+### Assumptions ###
 
-* Redmine 2 running on a *nix-like system.
+* Redmine running on a *nix-like system.
 * Git 1.6 or higher available on the commandline.
 
 
