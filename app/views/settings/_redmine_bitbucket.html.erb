@@ -1,20 +1,20 @@
 <p>
   <label><%= l(:label_service_enabled) %></label>
-  <%= check_box_tag 'settings[service_enabled]', 1, @settings[:service_enabled] %>
+  <%= check_box_tag 'settings[service_enabled]', 1, @settings['service_enabled'] %>
 </p>
 <p>
   <label><%= l(:label_auto_create) %></label>
-  <%= check_box_tag 'settings[auto_create]', 1, @settings[:auto_create] %>
+  <%= check_box_tag 'settings[auto_create]', 1, @settings['auto_create'] %>
 </p>
 <p>
   <label><%= l(:label_service_key) %></label>
-  <%= text_field_tag 'settings[service_key]', @settings[:service_key], :size => 50 %>
+  <%= text_field_tag 'settings[service_key]', @settings['service_key'], :size => 50 %>
 </p>
 <p>
   <label><%= l(:label_local_path) %></label>
-  <%= text_field_tag 'settings[local_path]', @settings[:local_path], :size => 50 %>
+  <%= text_field_tag 'settings[local_path]', @settings['local_path'], :size => 50 %>
 </p>
 <p>
   <label><%= l(:label_git_fetch_with_prune) %></label>
-  <%= check_box_tag 'settings[git_fetch_with_prune]', 1, @settings[:git_fetch_with_prune] %>
+  <%= check_box_tag 'settings[git_fetch_with_prune]', 1, @settings['git_fetch_with_prune'] %>
 </p>

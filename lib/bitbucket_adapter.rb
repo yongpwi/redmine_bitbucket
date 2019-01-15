@@ -20,7 +20,7 @@ class BitbucketAdapter
   def create_repository(project)
     path = "#{@owner}/#{@slug}"
 
-    local_root_path = Setting.plugin_redmine_bitbucket[:local_path]
+    local_root_path = Setting.plugin_redmine_bitbucket['local_path']
     local_url = "#{local_root_path}/#{path}/#{project.identifier}/"
 
     FileUtils.mkdir_p(local_url) unless File.exists?(local_url)

@@ -29,11 +29,11 @@ class BitbucketServiceController < ApplicationController
   private
 
   def service_enabled?
-    Setting.plugin_redmine_bitbucket[:service_enabled]
+    Setting.plugin_redmine_bitbucket['service_enabled']
   end
 
   def valid_key?
-    setting_key = Setting.plugin_redmine_bitbucket[:service_key]
+    setting_key = Setting.plugin_redmine_bitbucket['service_key']
     return true if setting_key.to_s == ''
     return params[:key] == setting_key
   end
@@ -57,7 +57,7 @@ class BitbucketServiceController < ApplicationController
     if repository
       adapter.update_repository(repository)
 
-    elsif Setting.plugin_redmine_bitbucket[:auto_create]
+    elsif Setting.plugin_redmine_bitbucket['auto_create']
       # Clone the repository into Redmine
       repository = adapter.create_repository(project)
 
